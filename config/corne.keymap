@@ -11,7 +11,6 @@
 #define DEF 0  // layer shortcuts, must match order in which they are defined below
 #define NAV 1
 #define NUM 2
-#define GER 3
 
 /* custom behaviors */
 
@@ -33,13 +32,6 @@ ZMK_BEHAVIOR(ss_cw, tap_dance,
 ZMK_BEHAVIOR(bs_del_num, mod_morph,
     bindings = <&lt NUM BSPC>, <&kp DEL>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
-)
-
-// windows sleep macro
-ZMK_BEHAVIOR(win_sleep, macro,
-    wait-ms = <100>;
-    tap-ms = <5>;
-    bindings = <&kp LG(X) &kp U &kp S>;
 )
 
 // combos
