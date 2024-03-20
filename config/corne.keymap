@@ -62,8 +62,14 @@
         };
 
         arrow_layer {
+            // -----------------------------------------------------------------------------------------
+            // |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+            // | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+            // |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+            
             bindings = <
-&none  &none       &none N7   &none N8  &none N9  &none KP_PLUS        &none    &kp K_COPY       &kp K_PASTE  &kp K_CUT  &none        &none
+&none  &none       &none      &none     &none     &none                &none    &kp K_COPY       &kp K_PASTE  &kp K_CUT  &none        &none
 &none  &kp LSHIFT  &kp LCTRL  &kp LALT  &kp LGUI  &none KP_SUBTRACT    &none    &kp LEFT         &kp DOWN     &kp UP     &kp RIGHT    &none
 &none  &none       &none      &none     &none     &none                &none    &kp RC(RS(TAB))  &kp HOME     &kp END    &kp RC(TAB)  &none
                               &none     &none     &kp SPACE            &kp RET  &none            &none
