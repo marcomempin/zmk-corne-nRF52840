@@ -17,6 +17,15 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        tht: thumb_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
     };
 
     keymap {
@@ -33,7 +42,7 @@
 &none  &kp Q       &kp W       &kp E        &kp R         &kp T    &kp Y    &kp U              &kp I        &kp O       &kp P          &none
 &none  &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHIFT F  &kp G    &kp H    &hm RSHIFT J       &hm RCTRL K  &hm RALT L  &hm LGUI SEMI  &none
 &none  &kp Z       &kp X       &kp C        &kp V         &kp B    &kp N    &kp M              &kp COMMA    &kp DOT     &kp FSLH       &none
-                               &none        &kp SPACE     &mo 0    &kp RET  &kp LC(BACKSPACE)  &kp DELETE
+                               &none        &kp SPACE     &mo 0    &kp RET  &tht 1 LC(BACKSPACE)  &kp DELETE
             >;
         };
 
