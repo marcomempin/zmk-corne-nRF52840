@@ -54,19 +54,19 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &none   &kp N7  &kp N8  &kp N9  &kp KP_PLUS        &none    &none            &none        &none      &none        &none
-&none  &kp N0  &kp N4  &kp N5  &kp N6  &kp KP_SUBTRACT    &none    &kp RSHIFT       &kp RCTRL    &kp RALT   &kp RGUI    &none
-&none  &none   &kp N1  &kp N2  &kp N3  &kp KP_MULTIPLY    &none    &none            &none        &none      &none        &none
-                       &none   &kp DOT   &kp KP_DIVIDE    &none    &none            &none
+&none  &none   &kp N7  &kp N8      &kp N9         &kp KP_PLUS        &none  &none       &none      &none     &none     &none
+&none  &kp N0  &kp N4  &kp N5      &kp N6         &kp KP_SUBTRACT    &none  &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
+&none  &none   &kp N1  &kp N2      &kp N3         &kp KP_MULTIPLY    &none  &none       &none      &none     &none     &none
+                       &kp KP_DOT  &kp KP_DIVIDE  &kp KP_EQUAL       &none  &none       &none
             >;
         };
 
         arrow_layer {
             bindings = <
-&none  &none   &none N7  &none N8  &none N9  &none KP_PLUS        &none    &kp K_COPY       &kp K_PASTE  &kp K_CUT  &none        &none
-&none  &kp LSHIFT       &kp LCTRL    &kp LALT   &kp LGUI  &none KP_SUBTRACT    &none    &kp LEFT         &kp DOWN     &kp UP     &kp RIGHT    &none
-&none  &none   &kp N1  &kp N2  &kp N3  &kp KP_MULTIPLY    &none    &kp RC(RS(TAB))  &kp HOME     &kp END    &kp RC(TAB)  &none
-                       &none   &none   &kp SPACE          &kp RET  &none            &none
+&none  &none       &none N7   &none N8  &none N9  &none KP_PLUS        &none    &kp K_COPY       &kp K_PASTE  &kp K_CUT  &none        &none
+&none  &kp LSHIFT  &kp LCTRL  &kp LALT  &kp LGUI  &none KP_SUBTRACT    &none    &kp LEFT         &kp DOWN     &kp UP     &kp RIGHT    &none
+&none  &none       &none      &none     &none     &none                &none    &kp RC(RS(TAB))  &kp HOME     &kp END    &kp RC(TAB)  &none
+                              &none     &none     &kp SPACE            &kp RET  &none            &none
             >;
         };
     };
