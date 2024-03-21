@@ -36,54 +36,34 @@ ZMK_BEHAVIOR(ss_cw, tap_dance,
     bindings = <&sk LSHFT>, <&caps_word>;
 )
 
-// tap: backspace | shift + tap: delete | hold: num layer
-ZMK_BEHAVIOR(bs_del_num, mod_morph,
-    bindings = <&lt NUM BSPC>, <&kp DEL>;
+KOKLPP
+// tap: delete word (ctrl+backspace) | shift + tap: delete | hold: num layer
+ZMK_BEHAVIOR(dw_del_num, mod_morph,
+    bindings = <&lt NUM RC(BSPC)>, <&kp DEL>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
 /* keymap */
 
-// ZMK_LAYER(def,
-//           &kp Q              &kp W          &kp E         &kp R         &kp T             &kp Y         &kp U         &kp I         &kp O         &kp P
-//           &hrm LGUI A   &hrm LALT S   &hrm LCTRL D  &hrm LSHFT F  &kp G             &kp H         &hrm RSHFT I  &hrm RCTRL J  &hrm RALT K   &hrm RGUI L
-//           &kp Z               &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH
-//                                       &kp ESC       &lt NAV SPACE &kp TAB           &kp RET       &bs_del_num   &ss_cw
-// )
-
-// ZMK_LAYER(nav,
-//           XXX               &kp LC(C)       &kp LC(V)       &kp LC(X)      XXX             XXX         XXX               XXX                   XXX             XXX         
-//           &kp LGUI      &kp LALT         &kp LCTRL     &kp LSHFT     XXX             XXX         &kp LEFT      &kp DOWN       &kp UP       &kp RIGHT
-//           XXX               XXX                 XXX                 XXX                XXX             XXX         XXX               XXX                   XXX             XXX
-//                                                         XXX                 XXX                 XXX            XXX          BSPC             XXX
-// )
-
-// ZMK_LAYER(num,
-//           XXX           &kp N7         &kp N8       &kp N9         &kp PLUS               XXX         XXX               XXX                   XXX             XXX         
-//           &kp N0      &kp N4        &kp N5       &kp N6         &kp MINUS             XXX         &kp RSHFT   &kp RCTRL   &kp RALT    &kp RGUI 
-//           XXX           &kp N1         &kp N2       &kp N3         &kp STAR                XXX         XXX               XXX                   XXX             XXX
-//                                                  &kp DOT     &kp FSLH     &kp EQUAL            XXX          BSPC             XXX
-// )
-
 ZMK_LAYER(default_layer,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           XXX &kp Q         &kp W         &kp E         &kp R         &kp T             &kp Y         &kp U         &kp I         &kp O         &kp P XXX
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          XXX &hrm LGUI A   &hrm LALT S   &hrm LCTRL D  &hrm LSHFT F  &kp G             &kp H         &hrm RSHFT I  &hrm RCTRL J  &hrm RALT K   &hrm RGUI L XXX
+          XXX &hrm LGUI A   &hrm LALT S   &hrm LCTRL D  &hrm LSHFT F  &kp G             &kp H         &hrm RSHFT J  &hrm RCTRL K  &hrm RALT L   &hrm RGUI SEMI XXX
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           XXX &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH XXX
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                      &kp ESC       &lt NAV SPACE &kp TAB           &kp RET       &bs_del_num   &ss_cw
+                                      &kp ESC       &lt NAV SPACE &kp TAB           &kp RET       &dw_del_num   &ss_cw
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
 ZMK_LAYER(nav_layer,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          XXX ___           &kp LC(X)     &kp LC(INS)   &kp LS(INS)           ___               &kp PG_UP     &kp HOME      &kp UP        &kp END       &kp INS XXX
+          XXX ___       &kp LC(X)     &kp LC(INS)   &kp LS(INS)       ___            &kp PG_UP     &kp RC(X)     &kp RC(INS)   &kp RS(INS)  XXX XXX
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          XXX &sk LGUI      &sk LALT      &sk LCTRL     &sk LSHFT     ___               &kp PG_DN     &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL XXX
+          XXX &sk LGUI      &sk LALT      &sk LCTRL     &sk LSHFT     ___               &kp PG_DN     &kp LEFT      &kp DOWN      &kp UP     &kp RIGHT XXX
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          XXX ___           ___           ___           ___           ___               ___           &kp RC(X)     &kp RC(INS)   &kp RS(INS)   ___ XXX
+          XXX ___           ___           ___           ___           ___               ___         XXX             XXX           XXX     ___ XXX
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                                       ___           ___           ___               ___           ___           ___
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
