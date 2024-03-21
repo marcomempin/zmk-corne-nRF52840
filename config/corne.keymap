@@ -7,73 +7,121 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
-/ {
-    behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
+#include "../zmk-nodefree-config/helper.h"
+#include "../zmk-nodefree-config/keypos_def/keypos_36keys.h"
 
-        tht: thumb_hold_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;
-        };
-    };
 
-    keymap {
-        compatible = "zmk,keymap";
+/* layer and key shortcuts */
 
-        default_layer {
-            // -----------------------------------------------------------------------------------------
-            //  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |
-            //  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |
-            //  |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |
-            //              | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+#define ___ &trans
 
-            bindings = <
-&none  &kp Q       &kp W       &kp E        &kp R         &kp T           &kp Y                 &kp U         &kp I        &kp O       &kp P          &none
-&none  &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHIFT F  &kp G           &kp H                 &hm RSHIFT J  &hm RCTRL K  &hm RALT L  &hm LGUI SEMI  &none
-&none  &kp Z       &kp X       &kp C        &kp V         &kp B           &kp N                 &kp M         &kp COMMA    &kp DOT     &kp FSLH       &none
-                               &kp ESC      &kp TAB       &tht 2 SPACE    &tht 1 RC(BACKSPACE)  &kp ENTER     &kp DELETE
-            >;
-        };
+#define DEF 0  // layer shortcuts, must match order in which they are defined below
+#define NAV 1
+#define NUM 2
 
-        num_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
+/* custom behaviors */
 
-            bindings = <
-&none  &none   &kp N7  &kp N8      &kp N9         &kp KP_PLUS        &none  &none       &none      &none     &none     &none
-&none  &kp N0  &kp N4  &kp N5      &kp N6         &kp KP_SUBTRACT    &none  &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
-&none  &none   &kp N1  &kp N2      &kp N3         &kp KP_MULTIPLY    &none  &none       &none      &none     &none     &none
-                       &kp KP_DOT  &kp KP_DIVIDE  &kp KP_EQUAL       &none  &none       &none
-            >;
-        };
+// homerow mods
+ZMK_BEHAVIOR(hrm, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    bindings = <&kp>, <&kp>;
+)
 
-        arrow_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
+// tap: sticky shift | double tap: capsword
+ZMK_BEHAVIOR(ss_cw, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&sk LSHFT>, <&caps_word>;
+)
 
-            bindings = <
-&none  &none       &none      &none     &none     &none        &none          &kp K_COPY       &kp K_PASTE  &kp K_CUT  &none        &none
-&none  &kp LSHIFT  &kp LCTRL  &kp LALT  &kp LGUI  &none        &none          &kp LEFT         &kp DOWN     &kp UP     &kp RIGHT    &none
-&none  &none       &none      &none     &none     &none        &none          &kp RC(RS(TAB))  &kp HOME     &kp END    &kp RC(TAB)  &none
-                              &none     &none     &kp SPACE    &kp BACKSPACE  &trans           &trans
-            >;
-        };
-    };
-};
+// tap: backspace | shift + tap: delete | hold: num layer
+ZMK_BEHAVIOR(bs_del_num, mod_morph,
+    bindings = <&lt NUM BSPC>, <&kp DEL>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+/* keymap */
+
+ZMK_LAYER(default_layer,
+     // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+          &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp SQT
+     // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+          &hrm LGUI A   &hrm LALT R   &hrm LCTRL S  &hrm LSHFT T  &kp G             &kp M         &hrm RSHFT N  &hrm LCTRL E  &hrm LALT I   &hrm LGUI O
+     // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+          &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp SEMI
+     // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+                                      &kp ESC       &lt NAV SPACE &kp TAB           &kp RET       &bs_del_num   &ss_cw
+     //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
+)
+
+// / {
+//     behaviors {
+//         hm: homerow_mods {
+//             compatible = "zmk,behavior-hold-tap";
+//             #binding-cells = <2>;
+//             tapping-term-ms = <150>;
+//             quick-tap-ms = <0>;
+//             flavor = "tap-preferred";
+//             bindings = <&kp>, <&kp>;
+//         };
+
+//         tht: thumb_hold_tap {
+//             compatible = "zmk,behavior-hold-tap";
+//             #binding-cells = <2>;
+//             tapping-term-ms = <150>;
+//             quick-tap-ms = <0>;
+//             flavor = "tap-preferred";
+//             bindings = <&mo>, <&kp>;
+//         };
+//     };
+
+//     keymap {
+//         compatible = "zmk,keymap";
+
+//         default_layer {
+//             // -----------------------------------------------------------------------------------------
+//             //  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |
+//             //  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |
+//             //  |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |
+//             //              | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+
+//             bindings = <
+// &none  &kp Q       &kp W       &kp E        &kp R         &kp T           &kp Y                 &kp U         &kp I        &kp O       &kp P          &none
+// &none  &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHIFT F  &kp G           &kp H                 &hm RSHIFT J  &hm RCTRL K  &hm RALT L  &hm LGUI SEMI  &none
+// &none  &kp Z       &kp X       &kp C        &kp V         &kp B           &kp N                 &kp M         &kp COMMA    &kp DOT     &kp FSLH       &none
+//                                &kp ESC      &kp TAB       &tht 2 SPACE    &tht 1 RC(BACKSPACE)  &kp ENTER     &kp DELETE
+//             >;
+//         };
+
+//         num_layer {
+//             // -----------------------------------------------------------------------------------------
+//             // |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+//             // | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+//             // |     |     |     |     |     |   |     |     |     |     |     |      |
+//             //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+//             bindings = <
+// &none  &none   &kp N7  &kp N8      &kp N9         &kp KP_PLUS        &none  &none       &none      &none     &none     &none
+// &none  &kp N0  &kp N4  &kp N5      &kp N6         &kp KP_SUBTRACT    &none  &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
+// &none  &none   &kp N1  &kp N2      &kp N3         &kp KP_MULTIPLY    &none  &none       &none      &none     &none     &none
+//                        &kp KP_DOT  &kp KP_DIVIDE  &kp KP_EQUAL       &none  &none       &none
+//             >;
+//         };
+
+//         arrow_layer {
+//             // -----------------------------------------------------------------------------------------
+//             // |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+//             // | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+//             // |     |     |     |     |     |   |     |     |     |     |     |      |
+//             //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+//             bindings = <
+// &none  &none       &none      &none     &none     &none        &none          &kp K_COPY       &kp K_PASTE  &kp K_CUT  &none        &none
+// &none  &kp LSHIFT  &kp LCTRL  &kp LALT  &kp LGUI  &none        &none          &kp LEFT         &kp DOWN     &kp UP     &kp RIGHT    &none
+// &none  &none       &none      &none     &none     &none        &none          &kp RC(RS(TAB))  &kp HOME     &kp END    &kp RC(TAB)  &none
+//                               &none     &none     &kp SPACE    &kp BACKSPACE  &trans           &trans
+//             >;
+//         };
+//     };
+// };
