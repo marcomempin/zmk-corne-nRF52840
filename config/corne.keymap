@@ -13,6 +13,7 @@
 
 /* layer and key shortcuts */
 
+#define XXX &none
 #define ___ &trans
 
 #define DEF 0  // layer shortcuts, must match order in which they are defined below
@@ -44,15 +45,24 @@ ZMK_BEHAVIOR(bs_del_num, mod_morph,
 /* keymap */
 
 ZMK_LAYER(default_layer,
-     // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-          &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp SQT
-     // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &hrm LGUI A   &hrm LALT R   &hrm LCTRL S  &hrm LSHFT T  &kp G             &kp M         &hrm RSHFT N  &hrm LCTRL E  &hrm LALT I   &hrm LGUI O
-     // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp SEMI
-     // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+          &kp Q              &kp W          &kp E         &kp R         &kp T             &kp Y         &kp U         &kp I         &kp O         &kp P
+          &hrm LGUI A   &hrm LALT S   &hrm LCTRL D  &hrm LSHFT F  &kp G             &kp H         &hrm RSHFT I  &hrm RCTRL J  &hrm RALT K   &hrm RGUI L
+          &kp Z               &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH
                                       &kp ESC       &lt NAV SPACE &kp TAB           &kp RET       &bs_del_num   &ss_cw
-     //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
+)
+
+ZMK_LAYER(nav_layer,
+          XXX               &kp LC(C)       &kp LC(V)       &kp LC(X)      XXX             XXX         XXX               XXX                   XXX             XXX         
+          &kp LGUI      &kp LALT         &kp LCTRL     &kp LSHFT     XXX             XXX         &kp LEFT      &kp DOWN       &kp UP       &kp RIGHT
+          XXX               XXX                 XXX                 XXX                XXX             XXX         XXX               XXX                   XXX             XXX
+                                                        XXX                 XXX                 XXX            XXX          BSPC             XXX
+)
+
+ZMK_LAYER(num_layer,
+          XXX           &kp N7         &kp N8       &kp N9         &kp PLUS               XXX         XXX               XXX                   XXX             XXX         
+          &kp N0      &kp N4        &kp N5       &kp N6         &kp MINUS             XXX         &kp RSHFT   &kp RCTRL   &kp RALT    &kp RGUI 
+          XXX           &kp N1         &kp N2       &kp N3         &kp STAR                XXX         XXX               XXX                   XXX             XXX
+                                                 &kp DOT     &kp FSLH     &kp EQUAL            XXX          BSPC             XXX
 )
 
 // / {
