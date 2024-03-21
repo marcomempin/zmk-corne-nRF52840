@@ -36,7 +36,6 @@ ZMK_BEHAVIOR(ss_cw, tap_dance,
     bindings = <&sk LSHFT>, <&caps_word>;
 )
 
-KOKLPP
 // tap: delete word (ctrl+backspace) | shift + tap: delete | hold: num layer
 ZMK_BEHAVIOR(dw_del_num, mod_morph,
     bindings = <&lt NUM RC(BSPC)>, <&kp DEL>;
@@ -80,74 +79,3 @@ ZMK_LAYER(num_layer,
                                       &kp DOT       &kp FSLH        &kp EQUAL         ___           ___           ___
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
-
-// / {
-//     behaviors {
-//         hm: homerow_mods {
-//             compatible = "zmk,behavior-hold-tap";
-//             #binding-cells = <2>;
-//             tapping-term-ms = <150>;
-//             quick-tap-ms = <0>;
-//             flavor = "tap-preferred";
-//             bindings = <&kp>, <&kp>;
-//         };
-
-//         tht: thumb_hold_tap {
-//             compatible = "zmk,behavior-hold-tap";
-//             #binding-cells = <2>;
-//             tapping-term-ms = <150>;
-//             quick-tap-ms = <0>;
-//             flavor = "tap-preferred";
-//             bindings = <&mo>, <&kp>;
-//         };
-//     };
-
-//     keymap {
-//         compatible = "zmk,keymap";
-
-//         default_layer {
-//             // -----------------------------------------------------------------------------------------
-//             //  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |
-//             //  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |
-//             //  |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |
-//             //              | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
-//             bindings = <
-// &none  &kp Q       &kp W       &kp E        &kp R         &kp T           &kp Y                 &kp U         &kp I        &kp O       &kp P          &none
-// &none  &hm LGUI A  &hm LALT S  &hm LCTRL D  &hm LSHIFT F  &kp G           &kp H                 &hm RSHIFT J  &hm RCTRL K  &hm RALT L  &hm LGUI SEMI  &none
-// &none  &kp Z       &kp X       &kp C        &kp V         &kp B           &kp N                 &kp M         &kp COMMA    &kp DOT     &kp FSLH       &none
-//                                &kp ESC      &kp TAB       &tht 2 SPACE    &tht 1 RC(BACKSPACE)  &kp ENTER     &kp DELETE
-//             >;
-//         };
-
-//         num_layer {
-//             // -----------------------------------------------------------------------------------------
-//             // |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-//             // | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-//             // |     |     |     |     |     |   |     |     |     |     |     |      |
-//             //                    | GUI |     | SPC |   | ENT |     | ALT |
-
-//             bindings = <
-// &none  &none   &kp N7  &kp N8      &kp N9         &kp KP_PLUS        &none  &none       &none      &none     &none     &none
-// &none  &kp N0  &kp N4  &kp N5      &kp N6         &kp KP_SUBTRACT    &none  &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
-// &none  &none   &kp N1  &kp N2      &kp N3         &kp KP_MULTIPLY    &none  &none       &none      &none     &none     &none
-//                        &kp KP_DOT  &kp KP_DIVIDE  &kp KP_EQUAL       &none  &none       &none
-//             >;
-//         };
-
-//         arrow_layer {
-//             // -----------------------------------------------------------------------------------------
-//             // |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-//             // | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-//             // |     |     |     |     |     |   |     |     |     |     |     |      |
-//             //                    | GUI |     | SPC |   | ENT |     | ALT |
-
-//             bindings = <
-// &none  &none       &none      &none     &none     &none        &none          &kp K_COPY       &kp K_PASTE  &kp K_CUT  &none        &none
-// &none  &kp LSHIFT  &kp LCTRL  &kp LALT  &kp LGUI  &none        &none          &kp LEFT         &kp DOWN     &kp UP     &kp RIGHT    &none
-// &none  &none       &none      &none     &none     &none        &none          &kp RC(RS(TAB))  &kp HOME     &kp END    &kp RC(TAB)  &none
-//                               &none     &none     &kp SPACE    &kp BACKSPACE  &trans           &trans
-//             >;
-//         };
-//     };
-// };
