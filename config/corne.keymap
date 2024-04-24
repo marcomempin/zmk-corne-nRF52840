@@ -48,8 +48,8 @@ ZMK_BEHAVIOR(dw_del_num, mod_morph,
 
 /* combos */
 
-ZMK_COMBO_4_ARGS(left_par, &kp LPAR, RT0 RT1, QWERTY)
-ZMK_COMBO_4_ARGS(right_par, &kp RPAR, RT2 RT3, QWERTY)
+// ZMK_COMBO_4_ARGS(left_par, &kp LPAR, RT0 RT1, QWERTY)
+// ZMK_COMBO_4_ARGS(right_par, &kp RPAR, RT2 RT3, QWERTY)
 
 /* keymap */
 
