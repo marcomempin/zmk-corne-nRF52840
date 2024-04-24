@@ -17,7 +17,6 @@
 #define ___ &trans
 
 #define TAP_TERM_MS 250
-#define SHOW_WINDOWS C_AC_DESKTOP_SHOW_ALL_WINDOWS
 
 #define DEF 0  // layer shortcuts, must match order in which they are defined below
 #define NAV 1
@@ -62,7 +61,7 @@ ZMK_LAYER(QWERTY,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           XXX &kp Z         &kp X         &kp C         &kp V         &kp B         &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH       XXX
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                      &kp ESC       &lt NAV SPACE &kp TAB           &lt FN RET    &dw_del_num   &lt SYMBOL SHOW_WINDOWS
+                                      &kp ESC       &lt NAV SPACE &kp TAB           &lt FN RET    &dw_del_num   &lt SYMBOL C_AC_DESKTOP_SHOW_ALL_WINDOWS
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
