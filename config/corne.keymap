@@ -10,6 +10,13 @@
 #include "../zmk-nodefree-config/helper.h"
 #include "../zmk-nodefree-config/keypos_def/keypos_42keys.h"
 
+/* global settings */
+
+#define COMBO_TERM_FAST 18
+#define COMBO_TERM_SLOW 30
+
+#define COMBO_IDLE_FAST 150
+#define COMBO_IDLE_SLOW 50
 
 /* layer and key shortcuts */
 
@@ -48,8 +55,8 @@ ZMK_BEHAVIOR(dw_del_num, mod_morph,
 
 /* combos */
 
-// ZMK_COMBO(left_par, &kp LPAR, RT0 RT1, QWERTY)
-// ZMK_COMBO(right_par, &kp RPAR, RT2 RT3, QWERTY)
+ZMK_COMBO(left_par, &kp LPAR, RT0 RT1, QWERTY, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(right_par, &kp RPAR, RT2 RT3, QWERTY, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* keymap */
 
@@ -61,7 +68,7 @@ ZMK_LAYER(QWERTY,
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           XXX &kp Z         &kp X         &kp C         &kp V         &kp B         &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH       XXX
      // ╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                                      &kp ESC       &lt NAV SPACE &kp TAB           &lt FN RET    &dw_del_num   &lt SYMBOL C_AC_DESKTOP_SHOW_ALL_WINDOWS
+                                      &kp ESC       &lt NAV SPACE &kp TAB           &lt FN RET    &dw_del_num   &lt SYM C_AC_DESKTOP_SHOW_ALL_WINDOWS
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
