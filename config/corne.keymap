@@ -22,7 +22,7 @@
 #define NAV 1
 #define NUM 2
 #define FN 3
-#define SYMBOL 4
+#define SYM 4
 
 /* custom behaviors */
 
@@ -48,8 +48,8 @@ ZMK_BEHAVIOR(dw_del_num, mod_morph,
 
 /* combos */
 
-ZMK_COMBO(left_par, &kp LPAR, RT0 RT1, QWERTY)
-ZMK_COMBO(right_par, &kp RPAR, RT2 RT3, QWERTY)
+// ZMK_COMBO(left_par, &kp LPAR, RT0 RT1, QWERTY)
+// ZMK_COMBO(right_par, &kp RPAR, RT2 RT3, QWERTY)
 
 /* keymap */
 
@@ -89,7 +89,7 @@ ZMK_LAYER(NUMBER,
      //                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
 )
 
-ZMK_LAYER(FN,
+ZMK_LAYER(FUNCTION,
      // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
           XXX &kp F10       &kp F7        &kp F8        &kp F9        XXX          XXX           XXX           XXX           XXX           XXX             XXX
      // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
