@@ -7,8 +7,10 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
-#include "../zmk-nodefree-config/helper.h"
-#include "../zmk-nodefree-config/keypos_def/keypos_42keys.h"
+#include "zmk-helpers/helper.h"
+
+// 42 key matrix
+#include "zmk-helpers/key-labels/42.h"
 
 /* global settings */
 
